@@ -31,27 +31,21 @@ function updateImageDetails(picture) {
 
 }
 // Click on the heart icon to increase image likes on the page. No persistence is needed.
-//create event listener 'click' and increase +1
+//grab like button and assign to variable
+//create event listener 'click' and assign the likeButton function
+
 
 const button = document.querySelector('#like-button')
 button.addEventListener('click', likeButton)
 
+const likeButton = (event) => {
+    id = parseInt(event.target.parentElement.dataset.id)
 let likes = document.querySelector("#likes")
 num = parseInt(likes.innerText)
 num += 1
 likes.innerText = num
 
-fetch ('http://localhost:3000/comments', {
-  method: "POST",
-  headers: {
-    "Accept": 'application/json',
-    "Content-Type": 'application/json'
-  },
-  body: JSON.stringify ({
-    image_id: id
-  })
-})
-
+}
 
 
 // Add a new comment to the page when the comment form is submitted. No persistence is needed.
